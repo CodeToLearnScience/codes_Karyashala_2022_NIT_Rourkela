@@ -8,7 +8,7 @@ for solving one-dimensional compressible Euler equations using the Finite-Volume
 *Compile*
 ```
 cd cpp 
-g++ g++ euler_1d.cpp -std=c++17
+g++ euler_1d.cpp -std=c++17
 ```
 
 *Run*
