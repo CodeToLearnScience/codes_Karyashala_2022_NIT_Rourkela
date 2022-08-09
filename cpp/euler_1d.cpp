@@ -284,13 +284,17 @@ main() -> int
     }
 
     boundary_condition(cons_vars_new);
+    
 
-    for (std::size_t i = 0; i < cons_vars.size(); i++) {
-      for (std::size_t j = 0; j < cons_vars[i].size(); j++) {
-        cons_vars[i][j] = cons_vars_new[i][j];
-      }
-    }
-
+   // for (std::size_t i = 0; i < cons_vars.size(); i++) {
+   //   for (std::size_t j = 0; j < cons_vars[i].size(); j++) {
+   //     cons_vars[i][j] = cons_vars_new[i][j];
+   //   }
+   // }
+    
+    //or we can swap pointers
+    cons_vars.swap(cons_vars_new);
+    
     time += dt;
     std::cout << "time: " << time << "\n";
   }
