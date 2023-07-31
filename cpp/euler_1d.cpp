@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <array>
+#include <chrono>
 #include <cmath>
 #include <fstream>
 #include <iostream>
@@ -255,8 +256,10 @@ write_results(const std::vector<std::array<T, 3>>& cons_vars, Grid<T>& grid)
 auto
 main() -> int
 {
+  const auto start = std::chrono::high_resolution_clock::now();
+
   using T = double;
-  Grid<T> grid(0.0, 1.0, 1001);
+  Grid<T> grid(0.0, 1.0, 10001);
   std::vector<T> x = grid.grid();
   const auto dx = grid.dx();
 
@@ -284,22 +287,24 @@ main() -> int
     }
 
     boundary_condition(cons_vars_new);
-    
 
-   // for (std::size_t i = 0; i < cons_vars.size(); i++) {
-   //   for (std::size_t j = 0; j < cons_vars[i].size(); j++) {
-   //     cons_vars[i][j] = cons_vars_new[i][j];
-   //   }
-   // }
-    
-    //or we can swap pointers
+    // for (std::size_t i = 0; i < cons_vars.size(); i++) {
+    //   for (std::size_t j = 0; j < cons_vars[i].size(); j++) {
+    //     cons_vars[i][j] = cons_vars_new[i][j];
+    //   }
+    // }
+
+    // or we can swap pointers
     cons_vars.swap(cons_vars_new);
-    
+
     time += dt;
     std::cout << "time: " << time << "\n";
   }
 
   write_results<T>(cons_vars, grid);
-
+  const auto end = std::chrono::high_resolution_clock::now();
+  const auto duration =
+    std::chrono::duration_cast<std::chrono::seconds>(end - start);
+  std::cout << "Total time taken for simulations: " << duration.count() << "\n";
   return 0;
 }
