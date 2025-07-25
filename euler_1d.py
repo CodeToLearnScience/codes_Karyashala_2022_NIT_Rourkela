@@ -116,7 +116,7 @@ while time <= 0.2:
     print(time)
 
 prim_var = cons_to_prim_vars(cons_var)
-analytical = np.loadtxt('/mnt/external_data/user/my_codes/compressible_euler_1d/output/shock_tube.dat')
+analytical = np.loadtxt('/mnt/external_data/new-new-user/my_codes/compressible_euler_1d/output/shock_tube.dat')
 plt.plot(x_grid, prim_var[:, 0], label='LLF')
 plt.plot(analytical[:, 0], analytical[:, 1], label='Analytical')
 plt.xlabel('x', fontsize=16)
