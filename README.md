@@ -25,8 +25,8 @@ jupyter-lab plot_results.ipynb
 ```
 
 *Running jax code*
-'''
+```
 LD_LIBRARY_PATH="" python3 euler_llf_jax.py
-'''
+```
 
 
